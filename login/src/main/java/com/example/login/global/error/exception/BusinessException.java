@@ -1,4 +1,4 @@
-package com.example.login.global.error;
+package com.example.login.global.error.exception;
 
 import lombok.*;
 
