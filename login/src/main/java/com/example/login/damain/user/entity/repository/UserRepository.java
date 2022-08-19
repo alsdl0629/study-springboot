@@ -1,4 +1,4 @@
-package com.example.login.damain.user.repository;
+package com.example.login.damain.user.entity.repository;
 
 import com.example.login.damain.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

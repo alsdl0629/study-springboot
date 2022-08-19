@@ -1,6 +1,6 @@
 package com.example.login.global.security.auth;
 
-import com.example.login.damain.user.repository.UserRepository;
+import com.example.login.damain.user.entity.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
