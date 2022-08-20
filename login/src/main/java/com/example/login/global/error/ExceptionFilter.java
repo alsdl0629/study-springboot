@@ -1,7 +1,6 @@
 package com.example.login.global.error;
 
 import com.example.login.global.error.exception.BusinessException;
-import com.example.login.global.error.exception.ErrorCode;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
