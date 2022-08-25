@@ -19,23 +19,25 @@ public class SecurityConfig {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Bean
-    protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
                 .csrf().disable()
                 .formLogin().disable()
                 .cors()
 
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
-        http
+                .and()
                 .authorizeRequests()
 
-                .anyRequest().permitAll()
-                .and().apply(new FilterConfig(jwtTokenProvider));
+                .anyRequest().authenticated()
 
-        return http.build();
+                .and()
+                .apply(new FilterConfig(jwtTokenProvider))
+
+                .and().build();
     }
 
     @Bean
