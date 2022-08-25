@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
 
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
 
                 .and()
                 .apply(new FilterConfig(jwtTokenProvider))
