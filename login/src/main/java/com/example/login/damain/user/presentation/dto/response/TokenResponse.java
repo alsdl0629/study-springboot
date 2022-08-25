@@ -1,4 +1,4 @@
-package com.example.login.damain.user.api.dto.response;
+package com.example.login.damain.user.presentation.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,8 @@
-package com.example.login.damain.user.api;
+package com.example.login.damain.user.presentation;
 
-import com.example.login.damain.user.api.dto.request.SignupRequest;
+import com.example.login.damain.user.presentation.dto.request.LoginRequest;
+import com.example.login.damain.user.presentation.dto.request.SignupRequest;
+import com.example.login.damain.user.presentation.dto.response.TokenResponse;
 import com.example.login.damain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,11 @@ public class UserController {
     @PostMapping
     public void Signup(@RequestBody @Valid SignupRequest request) {
         userService.signup(request);
+    }
+
+    @PostMapping("/auth")
+    public TokenResponse login(@RequestBody @Valid LoginRequest request) {
+        return userService.login(request);
     }
 
 }

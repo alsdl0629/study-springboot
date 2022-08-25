@@ -2,7 +2,7 @@ package com.example.login.global.security.jwt;
 
 import com.example.login.damain.refreshtoken.RefreshRepository;
 import com.example.login.damain.refreshtoken.RefreshToken;
-import com.example.login.damain.user.api.dto.response.TokenResponse;
+import com.example.login.damain.user.presentation.dto.response.TokenResponse;
 import com.example.login.global.exception.ExpiredTokenException;
 import com.example.login.global.exception.InvalidTokenException;
 import com.example.login.global.security.auth.AuthDetailsService;
