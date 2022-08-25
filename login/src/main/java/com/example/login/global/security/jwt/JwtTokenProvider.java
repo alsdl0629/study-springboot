@@ -7,7 +7,7 @@ import com.example.login.global.exception.ExpiredTokenException;
 import com.example.login.global.exception.InvalidTokenException;
 import com.example.login.global.security.auth.AuthDetailsService;
 import io.jsonwebtoken.*;
-import lombok.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,7 +41,7 @@ public class JwtTokenProvider {
         return Jwts.builder()
                 .setSubject(email)
                 .claim("type", "access")
-                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKet())
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getAccessExp() * 1000))
                 .setIssuedAt(new Date())
                 .compact();
@@ -51,7 +51,7 @@ public class JwtTokenProvider {
         return Jwts.builder()
                 .setSubject(email)
                 .claim("type", "refresh")
-                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKet())
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getRefreshExp() * 1000))
                 .setIssuedAt(new Date())
                 .compact();
@@ -79,7 +79,7 @@ public class JwtTokenProvider {
     private Claims getBody(String token) {
         try {
             return Jwts.parser()
-                    .setSigningKey(jwtProperties.getSecretKet())
+                    .setSigningKey(jwtProperties.getSecretKey())
                     .parseClaimsJws(token)
                     .getBody();
         } catch (ExpiredJwtException e) {
