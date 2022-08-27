@@ -2,6 +2,7 @@ package com.example.login.damain.user.facade;
 
 import com.example.login.damain.auth.entity.AuthCode;
 import com.example.login.damain.auth.entity.repository.AuthCodeRepository;
+import com.example.login.damain.user.exception.InvalidAuthCodeException;
 import com.example.login.global.util.JmsUtil;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -13,6 +14,15 @@ public class AuthCodeFacade {
 
     private final AuthCodeRepository authCodeRepository;
     private final JmsUtil jmsUtil;
+
+    public AuthCode getAuthCodeById(String email) {
+        return authCodeRepository.findById(email)
+                .orElseThrow(() -> InvalidAuthCodeException.EXCEPTION);
+    }
+
+    public boolean isVerify(String email) {
+        return getAuthCodeById(email).isVerify();
+    }
 
     public void sendEmail(String email) {
 
