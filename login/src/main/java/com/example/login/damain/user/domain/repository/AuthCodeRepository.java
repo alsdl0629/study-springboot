@@ -1,6 +1,6 @@
-package com.example.login.damain.user.entity.repository;
+package com.example.login.damain.user.domain.repository;
 
-import com.example.login.damain.user.entity.AuthCode;
+import com.example.login.damain.user.domain.AuthCode;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AuthCodeRepository extends CrudRepository<AuthCode, String> {

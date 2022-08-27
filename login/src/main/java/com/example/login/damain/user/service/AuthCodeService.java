@@ -1,6 +1,6 @@
 package com.example.login.damain.user.service;
 
-import com.example.login.damain.user.entity.repository.UserRepository;
+import com.example.login.damain.user.domain.repository.UserRepository;
 import com.example.login.damain.user.exception.UserAlreadyExistsException;
 import com.example.login.damain.user.facade.AuthCodeFacade;
 import com.example.login.damain.user.presentation.dto.request.EmailRequest;

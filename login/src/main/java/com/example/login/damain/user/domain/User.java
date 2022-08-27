@@ -1,4 +1,4 @@
-package com.example.login.damain.user.entity;
+package com.example.login.damain.user.domain;
 
 import lombok.*;
 

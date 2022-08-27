@@ -1,7 +1,7 @@
 package com.example.login.damain.user.service;
 
-import com.example.login.damain.user.entity.AuthCode;
-import com.example.login.damain.user.entity.repository.AuthCodeRepository;
+import com.example.login.damain.user.domain.AuthCode;
+import com.example.login.damain.user.domain.repository.AuthCodeRepository;
 import com.example.login.damain.user.exception.InvalidAuthCodeException;
 import com.example.login.damain.user.facade.AuthCodeFacade;
 import com.example.login.damain.user.presentation.dto.request.VerifyAuthCodeRequest;

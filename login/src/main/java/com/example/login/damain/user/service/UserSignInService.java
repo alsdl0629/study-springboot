@@ -1,7 +1,7 @@
 package com.example.login.damain.user.service;
 
-import com.example.login.damain.user.entity.User;
-import com.example.login.damain.user.entity.repository.UserRepository;
+import com.example.login.damain.user.domain.User;
+import com.example.login.damain.user.domain.repository.UserRepository;
 import com.example.login.damain.user.exception.InvalidPasswordException;
 import com.example.login.damain.user.exception.UserNotFoundException;
 import com.example.login.damain.user.presentation.dto.request.LoginRequest;

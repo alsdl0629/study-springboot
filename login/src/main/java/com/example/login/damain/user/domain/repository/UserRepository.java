@@ -1,6 +1,6 @@
-package com.example.login.damain.user.entity.repository;
+package com.example.login.damain.user.domain.repository;
 
-import com.example.login.damain.user.entity.User;
+import com.example.login.damain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
