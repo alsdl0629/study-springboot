@@ -9,9 +9,11 @@ public enum ErrorCode {
     INVALID_TOKEN(401, "Invalid Token"),
     EXPIRED_TOKEN(401, "Expired Token"),
     INVALID_PASSWORD(401, "Invalid Password"),
+    INVALID_AUTH_CODE(401, "Invalid Auth Code"),
 
     USER_NOT_FOUND(404, "User Not Found"),
-    USER_ALREADY_EXISTS(409, "User Already Exists");
+    USER_ALREADY_EXISTS(409, "User Already Exists")
+    ;
 
 
     private final int status;
