@@ -1,7 +1,7 @@
 package com.example.login.damain.user.facade;
 
 import com.example.login.damain.user.entity.repository.UserRepository;
-import com.example.login.damain.user.exception.UserAlreadyException;
+import com.example.login.damain.user.exception.UserAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +13,7 @@ public class UserFacade {
 
     public void isAlreadyExists(String email) {
         if(userRepository.existsByEmail(email)) {
-            throw UserAlreadyException.EXCEPTION;
+            throw UserAlreadyExistsException.EXCEPTION;
         }
     }
 
