@@ -1,19 +1,19 @@
 package com.example.login.damain.auth.entity;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.TimeToLive;
-import org.springframework.data.redis.core.index.Indexed;
-
-import java.io.Serializable;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @RedisHash
-public class AuthCode implements Serializable {
+public class AuthCode {
 
-    @Id @Indexed
+    @Id
     private String email;
 
     private String code;
@@ -29,6 +29,10 @@ public class AuthCode implements Serializable {
         this.code = code;
         this.isVerify = false;
         this.ttl = 300L;
+    }
+
+    public void changeVerify() {
+        this.isVerify = true;
     }
 
 }
