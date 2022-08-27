@@ -45,5 +45,5 @@ public class UserController {
     public TokenResponse login(@RequestBody @Valid LoginRequest request) {
         return userSignInService.execute(request);
     }
-    
+
 }
