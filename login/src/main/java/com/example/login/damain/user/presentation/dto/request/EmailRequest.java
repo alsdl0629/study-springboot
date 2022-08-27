@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class EmailRequest {
 
-    @NotBlank(message = "phone_number는 Null, 공백, 띄어쓰기를 허용하지 않습니다.")
+    @NotBlank(message = "email는 Null, 공백, 띄어쓰기를 허용하지 않습니다.")
     @Email(message = "email 형식이 올바르지 않습니다.")
     private String email;
 
