@@ -10,6 +10,7 @@ public enum ErrorCode {
     EXPIRED_TOKEN(401, "Expired Token"),
     INVALID_PASSWORD(401, "Invalid Password"),
     INVALID_AUTH_CODE(401, "Invalid Auth Code"),
+    UNVERIFIED_AUTH_CODE(401, "UnVerified Auth Code"),
 
     USER_NOT_FOUND(404, "User Not Found"),
     USER_ALREADY_EXISTS(409, "User Already Exists")
