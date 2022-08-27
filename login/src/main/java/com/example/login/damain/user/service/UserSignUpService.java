@@ -1,8 +1,8 @@
 package com.example.login.damain.user.service;
 
-import com.example.login.damain.user.entity.Authority;
-import com.example.login.damain.user.entity.User;
-import com.example.login.damain.user.entity.repository.UserRepository;
+import com.example.login.damain.user.domain.Authority;
+import com.example.login.damain.user.domain.User;
+import com.example.login.damain.user.domain.repository.UserRepository;
 import com.example.login.damain.user.exception.UnVerifiedAuthCodeException;
 import com.example.login.damain.user.facade.AuthCodeFacade;
 import com.example.login.damain.user.facade.UserFacade;
@@ -44,7 +44,10 @@ public class UserSignUpService {
                 .authority(Authority.ROLE_USER)
                 .build());
 
-        return jwtTokenProvider.generateToken(email);
+        String accessToken = jwtTokenProvider.generateAccessToken(email);
+        String refreshToken = jwtTokenProvider.generateRefreshToken(email);
+
+        return new TokenResponse(accessToken, refreshToken);
     }
 
 }
