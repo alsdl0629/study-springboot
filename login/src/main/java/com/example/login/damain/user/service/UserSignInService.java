@@ -23,14 +23,19 @@ public class UserSignInService {
     @Transactional
     public TokenResponse execute(LoginRequest request) {
 
-        User user = userRepository.findByEmail(request.getEmail())
+        String email = request.getEmail();
+
+        User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         if(!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw InvalidPasswordException.EXCEPTION;
         }
 
-        return jwtTokenProvider.generateToken(user.getEmail());
+        String accessToken = jwtTokenProvider.generateAccessToken(email);
+        String refreshToken = jwtTokenProvider.generateRefreshToken(email);
+
+        return new TokenResponse(accessToken, refreshToken);
     }
 
 }

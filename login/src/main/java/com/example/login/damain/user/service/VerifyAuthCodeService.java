@@ -19,9 +19,12 @@ public class VerifyAuthCodeService {
     @Transactional
     public void execute(VerifyAuthCodeRequest request) {
 
-        AuthCode authCode = authCodeFacade.getAuthCodeById(request.getEmail());
+        String email = request.getEmail();
+        String code = request.getCode();
 
-        if(authCode.isVerify() || !authCode.getCode().equals(request.getCode())) {
+        AuthCode authCode = authCodeFacade.getAuthCodeById(email);
+
+        if(authCode.isVerify() || !authCode.getCode().equals(code)) {
             throw InvalidAuthCodeException.EXCEPTION;
         }
 

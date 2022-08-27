@@ -16,11 +16,13 @@ public class AuthCodeService {
 
     public void execute(EmailRequest request) {
 
-        if(userRepository.existsByEmail(request.getEmail())) {
+        String email = request.getEmail();
+
+        if(userRepository.existsByEmail(email)) {
            throw UserAlreadyExistsException.EXCEPTION;
         }
 
-        authCodeFacade.sendEmail(request.getEmail());
+        authCodeFacade.sendEmail(email);
     }
 
 }
