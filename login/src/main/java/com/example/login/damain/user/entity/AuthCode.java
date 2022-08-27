@@ -1,4 +1,4 @@
-package com.example.login.damain.auth.entity;
+package com.example.login.damain.user.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;

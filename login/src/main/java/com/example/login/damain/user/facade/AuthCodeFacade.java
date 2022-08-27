@@ -1,7 +1,7 @@
 package com.example.login.damain.user.facade;
 
-import com.example.login.damain.auth.entity.AuthCode;
-import com.example.login.damain.auth.entity.repository.AuthCodeRepository;
+import com.example.login.damain.user.entity.AuthCode;
+import com.example.login.damain.user.entity.repository.AuthCodeRepository;
 import com.example.login.damain.user.exception.InvalidAuthCodeException;
 import com.example.login.global.util.JmsUtil;
 import lombok.RequiredArgsConstructor;
