@@ -26,7 +26,7 @@ public class AuthCodeFacade {
 
     public void sendEmail(String email) {
 
-        String code = getCode(createKey());
+        String code = createKey();
         jmsUtil.sendEmail(email, code);
 
         authCodeRepository.save(AuthCode.builder()
@@ -37,10 +37,6 @@ public class AuthCodeFacade {
 
     private String createKey() {
         return RandomStringUtils.randomNumeric(6);
-    }
-
-    private String getCode(String key) {
-        return key.substring(0, 3) + "-" + key.substring(3, 6);
     }
 
 }
