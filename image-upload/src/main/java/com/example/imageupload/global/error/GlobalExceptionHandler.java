@@ -1,5 +1,7 @@
 package com.example.imageupload.global.error;
 
+import com.example.imageupload.global.error.exception.BusinessException;
+import com.example.imageupload.global.error.exception.ErrorCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;

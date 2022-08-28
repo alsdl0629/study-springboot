@@ -1,4 +1,4 @@
-package com.example.imageupload.global.error;
+package com.example.imageupload.global.error.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
