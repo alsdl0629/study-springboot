@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
@@ -25,10 +26,14 @@ public class Feed {
     @NotNull
     private String content;
 
+    @NotNull
+    private LocalDateTime createdAt;
+
     @Builder
-    public Feed(String title, String content) {
+    public Feed(String title, String content, LocalDateTime createdAt) {
         this.title = title;
         this.content = content;
+        this.createdAt = createdAt;
     }
 
 }
