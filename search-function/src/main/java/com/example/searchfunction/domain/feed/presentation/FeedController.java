@@ -5,6 +5,9 @@ import com.example.searchfunction.domain.feed.presentation.dto.response.SearchRe
 import com.example.searchfunction.domain.feed.service.CreateFeedService;
 import com.example.searchfunction.domain.feed.service.SearchFeedService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +29,9 @@ public class FeedController {
     }
 
     @GetMapping("/search")
-    public List<SearchResponse> searchFeed(@RequestParam String keyword) {
-        return searchFeedService.execute(keyword);
+    public List<SearchResponse> searchFeed(@RequestParam String keyword,
+                                           @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
+        return searchFeedService.execute(keyword, pageable);
     }
 
 }
