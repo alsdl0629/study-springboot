@@ -26,6 +26,10 @@ public class AuthCodeFacade {
 
     public void sendEmail(String email) {
 
+        if(!isValid(email)) {
+            throw new RuntimeException("Wrong Email");
+        }
+
         String code = createKey();
         jmsUtil.sendEmail(email, code);
 
@@ -33,6 +37,10 @@ public class AuthCodeFacade {
                 .email(email)
                 .code(code)
                 .build());
+    }
+
+    private boolean isValid(String email) {
+        return email.endsWith("@dsm.hs.kr");
     }
 
     private String createKey() {
