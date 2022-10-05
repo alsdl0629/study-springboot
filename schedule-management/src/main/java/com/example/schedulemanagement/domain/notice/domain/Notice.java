@@ -1,6 +1,7 @@
 package com.example.schedulemanagement.domain.notice.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,7 @@ public class Notice {
     @NotNull
     private String content;
 
+    @Builder
     public Notice(String title, String content) {
         this.title = title;
         this.content = content;
