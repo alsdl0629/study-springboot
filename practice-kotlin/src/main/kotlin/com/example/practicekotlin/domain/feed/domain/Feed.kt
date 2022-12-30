@@ -21,4 +21,9 @@ class Feed (
     var content = content
         protected set
 
+    fun updateFeed(title: String, content: String) {
+        this.title = title
+        this.content = content
+    }
+
 }
