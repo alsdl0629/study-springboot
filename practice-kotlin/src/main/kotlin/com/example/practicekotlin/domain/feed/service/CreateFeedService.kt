@@ -14,11 +14,10 @@ class CreateFeedService(
     @Transactional
     fun execute(request: CreateFeedRequest) {
 
-        feedRepository.save(
-            Feed(
-                request.title,
-                request.content
-            ))
+        feedRepository.save(Feed(
+            title = request.title,
+            content = request.content)
+        )
     }
 
 }

@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController
 
 @RequestMapping("/feeds")
 @RestController
-class FeedController(private val createFeedService: CreateFeedService) {
+class FeedController(
+    private val createFeedService: CreateFeedService
+) {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     fun createFeed(@RequestBody request: CreateFeedRequest) {
         createFeedService.execute(request)
     }
-
 }
