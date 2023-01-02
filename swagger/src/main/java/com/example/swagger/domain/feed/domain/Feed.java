@@ -32,4 +32,9 @@ public class Feed {
         this.content = content;
     }
 
+    public void updateFeed(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
 }
