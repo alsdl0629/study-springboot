@@ -2,6 +2,7 @@ package com.example.swagger.domain.feed.presentation;
 
 import com.example.swagger.domain.feed.presentation.dto.request.CreateFeedRequest;
 import com.example.swagger.domain.feed.service.CreateFeedService;
+import com.example.swagger.domain.feed.service.DeleteFeedService;
 import com.example.swagger.domain.feed.service.UpdateFeedService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -24,6 +25,7 @@ public class FeedController {
 
     private final CreateFeedService createFeedService;
     private final UpdateFeedService updateFeedService;
+    private final DeleteFeedService deleteFeedService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -37,7 +39,7 @@ public class FeedController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PatchMapping
+    @PatchMapping("/{feed-id}")
     @Operation(summary = "게시글 수정하기")
     @ApiResponse(responseCode = "204", description = "게시글 수정 성공",
             content = @Content(schema = @Schema(hidden = true)))
@@ -46,5 +48,13 @@ public class FeedController {
         updateFeedService.execute(feedId, request);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{feed-id}")
+    @Operation(summary = "게시글 삭제하기")
+    @ApiResponse(responseCode = "204", description = "게시글 삭제 성공",
+            content = @Content(schema = @Schema(hidden = true)))
+    public void deleteFeed(@Parameter(description = "게시글 id") @PathVariable(name = "feed-id") Integer feedId) {
+        deleteFeedService.execute(feedId);
+    }
 
 }
