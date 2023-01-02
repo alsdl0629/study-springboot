@@ -1,0 +1,36 @@
+package com.example.swagger.domain.feed.presentation;
+
+import com.example.swagger.domain.feed.presentation.dto.request.CreateFeedRequest;
+import com.example.swagger.domain.feed.service.CreateFeedService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
+@Tag(name = "게시글", description = "게시글 관련 API 입니다.")
+@RequiredArgsConstructor
+@RequestMapping("/feeds")
+@RestController
+public class FeedController {
+
+    private final CreateFeedService createFeedService;
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    @Operation(summary = "게시글 생성하기")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "게시글 생성 성공",
+                    content = @Content(schema = @Schema(hidden = true)))
+    })
+    public void createFeed(@RequestBody @Valid CreateFeedRequest request) {
+        createFeedService.execute(request);
+    }
+
+}
