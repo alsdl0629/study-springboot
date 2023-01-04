@@ -3,6 +3,7 @@ package com.example.practicekotlin.domain.feed.presentation
 import com.example.practicekotlin.domain.feed.presentation.dto.request.CreateFeedRequest
 import com.example.practicekotlin.domain.feed.presentation.dto.request.UpdateFeedRequest
 import com.example.practicekotlin.domain.feed.service.CreateFeedService
+import com.example.practicekotlin.domain.feed.service.DeleteFeedService
 import com.example.practicekotlin.domain.feed.service.UpdateFeedService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class FeedController(
     private val createFeedService: CreateFeedService,
-    private val updateFeedService: UpdateFeedService
+    private val updateFeedService: UpdateFeedService,
+    private val deleteFeedService: DeleteFeedService
 ) {
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -26,6 +28,12 @@ class FeedController(
                    @RequestBody request: UpdateFeedRequest
     ) {
         updateFeedService.execute(feedId, request)
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{feed-id}")
+    fun deleteFeed(@PathVariable("feed-id") feedId: Long) {
+        deleteFeedService.execute(feedId)
     }
 
 }
