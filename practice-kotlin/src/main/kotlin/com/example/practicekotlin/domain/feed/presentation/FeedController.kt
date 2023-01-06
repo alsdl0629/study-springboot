@@ -2,6 +2,7 @@ package com.example.practicekotlin.domain.feed.presentation
 
 import com.example.practicekotlin.domain.feed.presentation.dto.request.CreateFeedRequest
 import com.example.practicekotlin.domain.feed.presentation.dto.request.UpdateFeedRequest
+import com.example.practicekotlin.domain.feed.presentation.dto.response.QueryFeedListResponse
 import com.example.practicekotlin.domain.feed.presentation.dto.response.QueryFeedResponse
 import com.example.practicekotlin.domain.feed.service.*
 import org.springframework.http.HttpStatus
@@ -13,7 +14,8 @@ class FeedController(
     private val createFeedService: CreateFeedService,
     private val updateFeedService: UpdateFeedService,
     private val deleteFeedService: DeleteFeedService,
-    private val queryFeedDetailService: QueryFeedDetailService
+    private val queryFeedDetailService: QueryFeedDetailService,
+    private val queryFeedListService: QueryFeedListService
 ) {
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -25,8 +27,7 @@ class FeedController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping("/{feed-id}")
     fun updateFeed(@PathVariable("feed-id") feedId: Long,
-                   @RequestBody request: UpdateFeedRequest
-    ) {
+                   @RequestBody request: UpdateFeedRequest) {
         updateFeedService.execute(feedId, request)
     }
 
@@ -39,6 +40,11 @@ class FeedController(
     @GetMapping("/{feed-id}")
     fun getFeedDetail(@PathVariable("feed-id") feedId: Long): QueryFeedResponse {
         return queryFeedDetailService.execute(feedId)
+    }
+
+    @GetMapping
+    fun getFeedList(): QueryFeedListResponse {
+        return queryFeedListService.execute()
     }
 
 }
