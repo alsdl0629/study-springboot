@@ -1,6 +1,6 @@
 package com.example.practicekotlin.global.error.exception
 
-enum class ErrorCode(
+enum class GlobalErrorCode(
     val status: Int,
     val message: String
 ) {
