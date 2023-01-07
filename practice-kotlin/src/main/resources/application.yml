@@ -16,3 +16,10 @@ spring:
     show-sql: true
   jackson:
     property-naming-strategy: SNAKE_CASE
+
+jwt:
+  secret-key: ${SECRET_KEY}
+  access-exp: ${ACCESS_EXP}
+  refresh-exp: ${REFRESH_EXP}
+  header: ${HEADER}
+  prefix: ${PREFIX}
