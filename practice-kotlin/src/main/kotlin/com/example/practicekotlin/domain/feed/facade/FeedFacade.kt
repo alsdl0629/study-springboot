@@ -2,7 +2,7 @@ package com.example.practicekotlin.domain.feed.facade
 
 import com.example.practicekotlin.domain.feed.domain.Feed
 import com.example.practicekotlin.domain.feed.domain.repository.FeedRepository
-import com.example.practicekotlin.domain.feed.exception.FeedNotFound
+import com.example.practicekotlin.domain.feed.exception.FeedNotFoundException
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 
@@ -12,7 +12,7 @@ class FeedFacade(
 ) {
 
     fun getFeedById(feedId: Long): Feed {
-        return feedRepository.findByIdOrNull(feedId) ?: throw FeedNotFound.EXCEPTION
+        return feedRepository.findByIdOrNull(feedId) ?: throw FeedNotFoundException.EXCEPTION
     }
 
 }
