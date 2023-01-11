@@ -6,24 +6,14 @@ import javax.persistence.*
 @Entity
 class User(
 
-    accountId: String,
-
-    password: String,
-
-    authority: Authority
-) {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
-    var accountId = accountId
-        protected set
+    val accountId: String,
 
-    var password = password
-        protected set
+    var password: String,
 
     @Enumerated(EnumType.STRING)
-    val authority = authority
-
-}
+    val authority: Authority
+)

@@ -7,19 +7,15 @@ import javax.persistence.Id
 
 @Entity
 class Feed (
-    title: String,
-    content: String
-) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0
+    val id: Long = 0,
 
-    var title = title
-        protected set
+    var title: String,
 
-    var content = content
-        protected set
+    var content: String
+) {
 
     fun updateFeed(title: String, content: String) {
         this.title = title
