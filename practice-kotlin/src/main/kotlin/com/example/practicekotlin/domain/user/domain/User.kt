@@ -6,16 +6,16 @@ import javax.persistence.*
 @Entity
 class User(
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
-
     accountId: String,
 
     password: String,
 
     authority: Authority
 ) {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0,
 
     var accountId = accountId
         protected set
