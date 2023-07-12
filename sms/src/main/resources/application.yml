@@ -1,0 +1,4 @@
+cool-sms:
+  api-key: ${API_KEY}
+  secret-key: ${SECRET_KEY}
+  from: ${FROM}
