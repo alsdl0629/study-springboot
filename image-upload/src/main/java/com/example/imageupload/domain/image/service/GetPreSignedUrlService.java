@@ -12,8 +12,6 @@ public class GetPreSignedUrlService {
     private final S3Service s3Service;
 
     public PreSignedUrlResponse execute(String imageUrl) {
-        String preSignedUrl = s3Service.getPreSignedUrl(imageUrl);
-
-        return new PreSignedUrlResponse(preSignedUrl, imageUrl);
+        return s3Service.getPreSignedUrl(imageUrl);
     }
 }

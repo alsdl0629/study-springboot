@@ -7,13 +7,13 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.example.imageupload.domain.image.presentation.PreSignedUrlResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -49,12 +49,19 @@ public class S3Service {
         return amazonS3Client.getUrl(bucket, fileName).toString();
     }
 
-    public String getPreSignedUrl(String fileName) {
+    public PreSignedUrlResponse getPreSignedUrl(String fileName) {
         GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucket, fileName)
                 .withMethod(HttpMethod.PUT)
                 .withExpiration(getPreSignedUrlExpiration());
-        //request.addRequestParameter(Headers.S3_CANNED_ACL, CannedAccessControlList.PublicRead.toString());
-        return amazonS3Client.generatePresignedUrl(request).toString();
+        request.addRequestParameter(
+                Headers.S3_CANNED_ACL,
+                CannedAccessControlList.PublicRead.toString()
+        );
+
+        String preSignedUrl = amazonS3Client.generatePresignedUrl(request).toString();
+        String imageUrl = amazonS3Client.getUrl(bucket, fileName).toString();
+
+        return new PreSignedUrlResponse(preSignedUrl, imageUrl);
     }
 
     private Date getPreSignedUrlExpiration() {
