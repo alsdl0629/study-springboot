@@ -1,21 +1,21 @@
 package com.example.event.feed
 
 import com.example.event.EntityCreated
-import org.springframework.context.ApplicationContext
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
 
 @Service
 class FeedService(
     private val feedRepository: FeedRepository,
-    private val applicationContext: ApplicationContext
+    private val applicationEventPublisher: ApplicationEventPublisher
 ) {
 
     fun createFeed(request: FeedController.CreateFeedRequest) {
         val feed = feedRepository.save(
             Feed(title = request.title, content = "content")
         )
-        applicationContext.publishEvent(EntityCreated(
-            feed, feed.id
-        ))
+        applicationEventPublisher.publishEvent(
+            EntityCreated(feed.id)
+        )
     }
 }
