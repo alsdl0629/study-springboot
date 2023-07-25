@@ -12,7 +12,6 @@ class EntityEventHandler {
     fun on(entityCreated: EntityCreated) {
         entityCreated.apply {
             println("$entityId 번 피드가 저장됨")
-            println(Thread.currentThread().id)
         }
     }
 }
