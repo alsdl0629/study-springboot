@@ -26,6 +26,8 @@ dependencies {
     implementation("org.springframework.kafka:spring-kafka")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.0.10")
+    implementation("org.slf4j:slf4j-api:1.7.30")
 }
 
 tasks.withType<KotlinCompile> {
