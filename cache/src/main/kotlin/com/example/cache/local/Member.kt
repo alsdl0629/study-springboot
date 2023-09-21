@@ -1,4 +1,4 @@
-package com.example.cache.member
+package com.example.cache.local
 
 class Member(
     var id: Long,

@@ -1,4 +1,4 @@
-package com.example.cache.member
+package com.example.cache.local
 
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.DeleteMapping
